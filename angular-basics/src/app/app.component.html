@@ -18,3 +18,9 @@
 <div>
   <app-getter-input [title]="title"></app-getter-input>
 </div>
+
+<div>
+  <app-panel (childEvent)="dataReceived($event)"></app-panel>
+</div>
+
+<div *ngIf="receivedDataFromChild">{{ receivedDataFromChild }}</div>
