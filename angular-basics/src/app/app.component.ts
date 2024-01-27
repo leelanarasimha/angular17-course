@@ -30,8 +30,16 @@ export class AppComponent {
   title = 'angular-basics';
   counter: number = 20;
   receivedDataFromChild = '';
+  isActive = true;
 
   dataReceived(data: string) {
     this.receivedDataFromChild = data;
+  }
+
+  changeTitle() {
+    this.title = 'random string ' + Math.random();
+  }
+  toggleHook() {
+    this.isActive = !this.isActive;
   }
 }

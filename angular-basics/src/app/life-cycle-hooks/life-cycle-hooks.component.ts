@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, DestroyRef, Input, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-life-cycle-hooks',
@@ -10,13 +10,27 @@ import { Component, Input } from '@angular/core';
 export class LifeCycleHooksComponent {
   @Input() title = '';
   name = '';
-  constructor() {
+  constructor(private destroyRef: DestroyRef) {
     console.log('constructor called');
+
+    destroyRef.onDestroy(() => {
+      console.log('destroyref fired');
+    });
+    //console.log(this.title);
   }
 
   ngOnInit() {
-    console.log(this.title);
+    //console.log(this.title);
     console.log('ngoninit fired');
-    this.name = this.title + 'added on nginint';
+    ///this.name = this.title + 'added on nginint';
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('ngonchange fired');
+    console.log(changes);
+  }
+
+  ngOnDestroy() {
+    console.log('component destroyed');
   }
 }
