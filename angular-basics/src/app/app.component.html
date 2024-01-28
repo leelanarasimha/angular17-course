@@ -49,6 +49,11 @@
 
 <div>
   <button (click)="changeTitle()">change title</button>
+  <button (click)="updateCounter()">change Counter</button>
   <button (click)="toggleHook()">toggle COmponent</button>
-  <app-life-cycle-hooks [title]="title" *ngIf="isActive"></app-life-cycle-hooks>
+  <app-life-cycle-hooks
+    [title]="title"
+    [counter]="counter"
+    *ngIf="isActive"
+  ></app-life-cycle-hooks>
 </div>
