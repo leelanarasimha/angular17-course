@@ -23,8 +23,21 @@ export class CheckedLifeCycleComponent {
     this.items.push(`Item ${this.items.length + 1}`);
   }
 
+  ngDoCheck() {
+    console.log('do check fired');
+  }
+
+  ngAfterContentInit() {
+    console.log('after content init');
+  }
+
   ngAfterViewChecked() {
+    console.log('ngAfterView checked');
     this.scrollToBottom();
+  }
+
+  ngAfterContentChecked() {
+    console.log('after COntent Checked');
   }
 
   scrollToBottom() {
