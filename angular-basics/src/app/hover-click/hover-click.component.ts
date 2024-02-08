@@ -30,4 +30,8 @@ export class HoverClickComponent {
   onMouseLeave() {
     this.isHovered = false;
   }
+
+  someMethod() {
+    console.log('method called hovercomponent');
+  }
 }
