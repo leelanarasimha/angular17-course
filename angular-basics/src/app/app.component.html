@@ -62,6 +62,10 @@
   <app-after-render></app-after-render>
 </div> -->
 
-<div>
+<!-- <div>
   <app-view-child-example></app-view-child-example>
+</div> -->
+
+<div>
+  <app-task *ngFor="let task of tasks" [taskName]="task"></app-task>
 </div>
