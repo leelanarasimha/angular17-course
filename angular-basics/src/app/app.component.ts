@@ -14,6 +14,8 @@ import { ViewChildExampleComponent } from './view-child-example/view-child-examp
 import { TaskComponent } from './task/task.component';
 import { ChildComponent } from './child/child.component';
 import { ParentComponent } from './parent/parent.component';
+import { AdminProfileComponent } from './admin-profile/admin-profile.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +35,9 @@ import { ParentComponent } from './parent/parent.component';
     ViewChildExampleComponent,
     TaskComponent,
     ChildComponent,
-    ParentComponent
+    ParentComponent,
+    AdminProfileComponent,
+    UserProfileComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -44,6 +48,7 @@ export class AppComponent {
   counter: number = 20;
   receivedDataFromChild = '';
   isActive = true;
+  isAdmin = true;
 
   @ViewChildren(TaskComponent, { read: TaskComponent })
   taskComponents!: QueryList<TaskComponent>;
@@ -63,6 +68,10 @@ export class AppComponent {
     setTimeout(() => {
       this.tasks.push('hi leela');
     }, 3000);
+  }
+
+  getProfileComponent() {
+    return this.isAdmin ? AdminProfileComponent : UserProfileComponent;
   }
 
   changeTitle() {
