@@ -66,6 +66,7 @@
   <app-view-child-example></app-view-child-example>
 </div> -->
 
-<div>
-  <app-task *ngFor="let task of tasks" [taskName]="task"></app-task>
-</div>
+<app-parent>
+  <app-child></app-child>
+  <app-child></app-child>
+</app-parent>

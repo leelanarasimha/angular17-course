@@ -12,6 +12,8 @@ import { CheckedLifeCycleComponent } from './checked-life-cycle/checked-life-cyc
 import { AfterRenderComponent } from './after-render/after-render.component';
 import { ViewChildExampleComponent } from './view-child-example/view-child-example.component';
 import { TaskComponent } from './task/task.component';
+import { ChildComponent } from './child/child.component';
+import { ParentComponent } from './parent/parent.component';
 
 @Component({
   selector: 'app-root',
@@ -29,37 +31,38 @@ import { TaskComponent } from './task/task.component';
     CheckedLifeCycleComponent,
     AfterRenderComponent,
     ViewChildExampleComponent,
-    TaskComponent
+    TaskComponent,
+    ChildComponent,
+    ParentComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-
   tasks = ['task 1', 'task 2', 'task 3', 'task 4'];
   title = { name: 'angular-basics' };
   counter: number = 20;
   receivedDataFromChild = '';
   isActive = true;
 
-  @ViewChildren(TaskComponent, {read: ElementRef}) taskComponents!:
-  QueryList<ElementRef>;
+  @ViewChildren(TaskComponent, { read: TaskComponent })
+  taskComponents!: QueryList<TaskComponent>;
 
   dataReceived(data: string) {
     this.receivedDataFromChild = data;
   }
 
   ngAfterViewInit() {
-    this.taskComponents.forEach(taskComponent => {
-      console.log(taskComponent);
+    this.taskComponents.forEach((taskComponent) => {
+      console.log(taskComponent.taskName);
     });
     this.taskComponents.changes.subscribe(() => {
-      console.log("child components has changed");
+      console.log('child components has changed');
     });
 
     setTimeout(() => {
-      this.tasks.push("hi leela");
-    }, 3000)
+      this.tasks.push('hi leela');
+    }, 3000);
   }
 
   changeTitle() {
