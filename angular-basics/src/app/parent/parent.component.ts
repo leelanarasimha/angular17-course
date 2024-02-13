@@ -7,11 +7,13 @@ import {
 } from '@angular/core';
 import { ChildComponent } from '../child/child.component';
 import { SUB_ITEM } from '../subitem.token';
+import { ChildDefaultComponent } from '../child-default/child-default.component';
+import { ChildPushComponent } from '../child-push/child-push.component';
 
 @Component({
   selector: 'app-parent',
   standalone: true,
-  imports: [],
+  imports: [ChildDefaultComponent, ChildPushComponent],
   templateUrl: './parent.component.html',
   styleUrl: './parent.component.css',
 })
